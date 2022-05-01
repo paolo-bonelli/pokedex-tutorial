@@ -19,9 +19,18 @@ const getPokemon = async id => {
 function createPokemonCard(pokemon) {
     const pokemonEl = document.createElement('div');
     pokemonEl.classList.add('pokemon');
+    pokemonEl.id = pokemon.id;
+    
+    const pokeName = document.createElement('h3');
+    pokeName.innerHTML = pokemon.name;
+    pokemonEl.appendChild(pokeName);
 
-    const pokeInnerHtml = `${pokemon.id}`;
-    pokemonEl.innerHTML = pokeInnerHtml;
+    const pokeImg = document.createElement('img');
+    pokeImg.src = pokemon.sprites.other['official-artwork'].front_default;
+    pokeImg.alt = `${pokemon.name} front sprite`;
+    pokeImg.classList.add('poke-img')
+    pokemonEl.appendChild(pokeImg);
+
     poke_container.appendChild(pokemonEl)
 }
 
